@@ -19,7 +19,7 @@ class PostFilter(rest_filter.FilterSet):
 
     class Meta:
         model = Post
-        fields = ('status', 'created')
+        fields = ('title', 'created', )
 
 
 class PostsViewSet(viewsets.ModelViewSet):

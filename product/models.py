@@ -20,15 +20,13 @@ class Category(models.Model):
         verbose_name = 'Категорию'
         verbose_name_plural = 'Категория'
 
+    def __str__(self):
+        return self.slug
+
 
 class Post(models.Model):
-    STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published')
-    )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='aliexpress_post', verbose_name='Категория')
+    # category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='aliexpress_post', verbose_name='Категория')
     title = models.CharField('Название', max_length=50)
-    slug = models.SlugField('Слаг', max_length=250, unique_for_date='publish')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='aliexpress_posts', verbose_name='Автор')
     body = models.TextField('Содержение')
     publish = models.DateTimeField(default=timezone.now)
